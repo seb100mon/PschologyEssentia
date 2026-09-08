@@ -7,7 +7,7 @@ from pathlib import Path
 # --------------------------------------------------
 st.set_page_config(
     page_title="ESSENTIA",
-    page_icon="✨",
+    page_icon="",
     layout="wide"
 )
 
@@ -87,7 +87,7 @@ def poner_fondo_gif(nombre_archivo):
         }}
 
         div.stButton > button {{
-            width: 220px;
+            width: 100%;
             height: 56px;
 
             background: rgba(255,255,255,0.10);
@@ -149,28 +149,34 @@ if not st.session_state.inicio:
         unsafe_allow_html=True
     )
 
-
-
+    # Título
     st.markdown(
         "<div class='welcome-title'>Personality Quiz</div>",
         unsafe_allow_html=True
     )
 
+    # Subtítulo
     st.markdown(
-        "<div class='welcome-subtitle'>Descubre más sobre tu personalidad,<br>tu forma de pensar y la manera en que interactúas<br>con el mundo.</div>",
+        "<div class='welcome-subtitle'>"
+        "Descubre más sobre tu personalidad,<br>"
+        "tu forma de pensar y la manera en que interactúas<br>"
+        "con el mundo."
+        "</div>",
         unsafe_allow_html=True
     )
 
-col1, col2, col3 = st.columns([2, 1, 2])
+    # ----------------------------------------------
+    # BOTÓN CENTRADO
+    # ----------------------------------------------
+    col1, col2, col3 = st.columns([2, 1, 2])
 
-with col2:
-    if st.button("Comenzar →", use_container_width=True):
-        st.session_state.inicio = True
-        st.rerun()
+    with col2:
+        if st.button("Comenzar →", use_container_width=True):
+            st.session_state.inicio = True
+            st.rerun()
 
 
 #Preguntas
-
 else:
 
     st.title("Personality Quiz")
