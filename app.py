@@ -7,141 +7,237 @@ from pathlib import Path
 # --------------------------------------------------
 st.set_page_config(
     page_title="ESSENTIA",
-    page_icon="",
+    page_icon="✨",
     layout="wide"
 )
 
 
-def poner_fondo_gif(nombre_archivo):
-
+# --------------------------------------------------
+# CARGAR VIDEO
+# --------------------------------------------------
+@st.cache_data
+def cargar_video(nombre_archivo):
     ruta = Path(__file__).parent / nombre_archivo
 
     if not ruta.exists():
+        return None
+
+    video = ruta.read_bytes()
+    return base64.b64encode(video).decode()
+
+
+# --------------------------------------------------
+# VIDEO COMO FONDO
+# --------------------------------------------------
+def poner_fondo_video(nombre_archivo):
+
+    video_base64 = cargar_video(nombre_archivo)
+
+    if video_base64 is None:
         st.error(f"No se encontró el archivo: {nombre_archivo}")
         st.stop()
 
-    gif = ruta.read_bytes()
-    gif_base64 = base64.b64encode(gif).decode()
-
     st.markdown(
-        f"""<style>
-        .stApp {{
-            background-image: url("data:image/gif;base64,{gif_base64}");
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            min-height: 100vh;
-        }}
+        f"""
+<video autoplay muted loop playsinline id="background-video">
+    <source src="data:video/mp4;base64,{video_base64}" type="video/mp4">
+</video>
 
-        header {{
-            background: transparent !important;
-        }}
+<style>
 
-        footer {{
-            visibility: hidden;
-        }}
+/* VIDEO A PANTALLA COMPLETA */
+#background-video {{
+    position: fixed;
+    top: 0;
+    left: 0;
 
-        #MainMenu {{
-            visibility: hidden;
-        }}
+    width: 100vw;
+    height: 100vh;
 
-        .block-container {{
-            max-width: 100%;
-            padding-top: 0rem;
-            padding-bottom: 2rem;
-            padding-left: 4rem;
-            padding-right: 4rem;
-        }}
+    object-fit: cover;
+    object-position: center;
 
-        /* Título */
-        .welcome-title {{
-            font-size: clamp(55px, 6vw, 95px);
-            font-weight: 600;
-            color: white;
-            text-align: center;
-            letter-spacing: -3px;
-            line-height: 1;
-            margin-bottom: 24px;
-            text-shadow: 0px 2px 20px rgba(0,0,0,0.18);
-        }}
+    z-index: 0;
+    pointer-events: none;
+}}
 
-        /* Subtítulo */
-        .welcome-subtitle {{
-            font-size: clamp(18px, 1.5vw, 24px);
-            color: rgba(255,255,255,0.90);
-            text-align: center;
-            line-height: 1.6;
-            max-width: 720px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-            text-shadow: 0px 2px 15px rgba(0,0,0,0.20);
-        }}
 
-        /* Botón */
-        div.stButton {{
-            display: flex;
-            justify-content: center;
-            margin-top: 25px;
-        }}
+/* APP ENCIMA DEL VIDEO */
+.stApp {{
+    background: transparent !important;
+}}
 
-        div.stButton > button {{
-            width: 100%;
-            height: 56px;
+/* Contenido encima del video */
+[data-testid="stAppViewContainer"] {{
+    background: transparent !important;
+}}
 
-            background: rgba(255,255,255,0.10);
+[data-testid="stMain"] {{
+    position: relative;
+    z-index: 1;
+    background: transparent !important;
+}}
 
-            color: white;
 
-            border: 1px solid rgba(255,255,255,0.65);
+/* HEADER */
+header {{
+    background: transparent !important;
+    z-index: 2;
+}}
 
-            border-radius: 50px;
 
-            font-size: 17px;
-            font-weight: 500;
+/* FOOTER */
+footer {{
+    visibility: hidden;
+}}
 
-            backdrop-filter: blur(8px);
 
-            transition:
-                background 0.3s ease,
-                transform 0.3s ease,
-                color 0.3s ease;
-        }}
+/* MENU */
+#MainMenu {{
+    visibility: hidden;
+}}
 
-        div.stButton > button:hover {{
-            background: white;
-            color: black;
-            border-color: white;
-            transform: translateY(-2px);
-        }}
 
-        @media (max-width: 768px) {{
+/* CONTENEDOR PRINCIPAL */
+.block-container {{
+    max-width: 100%;
 
-            .block-container {{
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }}
+    padding-top: 0rem;
+    padding-bottom: 2rem;
 
-            .welcome-title {{
-                letter-spacing: -1px;
-            }}
-        }}
+    padding-left: 4rem;
+    padding-right: 4rem;
+}}
 
-        </style>""",
+
+/* --------------------------------------------------
+   TÍTULO
+-------------------------------------------------- */
+.welcome-title {{
+    font-size: clamp(55px, 6vw, 95px);
+
+    font-weight: 500;
+
+    color: white;
+
+    text-align: center;
+
+    letter-spacing: -3px;
+
+    line-height: 1;
+
+    margin-bottom: 24px;
+
+    text-shadow:
+        0px 2px 20px rgba(0,0,0,0.12);
+}}
+
+
+/* --------------------------------------------------
+   SUBTÍTULO
+-------------------------------------------------- */
+.welcome-subtitle {{
+    font-size: clamp(18px, 1.5vw, 24px);
+
+    color: rgba(255,255,255,0.92);
+
+    text-align: center;
+
+    line-height: 1.6;
+
+    max-width: 720px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    font-weight: 300;
+
+    text-shadow:
+        0px 2px 15px rgba(0,0,0,0.12);
+}}
+
+
+/* --------------------------------------------------
+   BOTÓN
+-------------------------------------------------- */
+div.stButton {{
+    margin-top: 25px;
+}}
+
+
+div.stButton > button {{
+
+    width: 100%;
+
+    height: 56px;
+
+    background: rgba(255,255,255,0.10);
+
+    color: white;
+
+    border:
+        1px solid rgba(255,255,255,0.70);
+
+    border-radius: 50px;
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+    backdrop-filter: blur(8px);
+
+    transition: all 0.3s ease;
+}}
+
+
+div.stButton > button:hover {{
+
+    background: white;
+
+    color: black;
+
+    border-color: white;
+
+    transform: translateY(-2px);
+}}
+
+
+/* --------------------------------------------------
+   MÓVIL
+-------------------------------------------------- */
+@media (max-width: 768px) {{
+
+    .block-container {{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }}
+
+    .welcome-title {{
+        letter-spacing: -1px;
+    }}
+
+}}
+
+</style>
+""",
         unsafe_allow_html=True
     )
 
 
+# --------------------------------------------------
+# SESSION STATE
+# --------------------------------------------------
 if "inicio" not in st.session_state:
     st.session_state.inicio = False
 
 
-#Welcome Screen
-
+# ==================================================
+# WELCOME SCREEN
+# ==================================================
 if not st.session_state.inicio:
 
-    poner_fondo_gif("white.gif")
+    # CAMBIAMOS GIF POR MP4
+    poner_fondo_video(white2.mp4")
 
     # Espacio superior
     st.markdown(
@@ -165,18 +261,22 @@ if not st.session_state.inicio:
         unsafe_allow_html=True
     )
 
-    # ----------------------------------------------
     # BOTÓN CENTRADO
-    # ----------------------------------------------
     col1, col2, col3 = st.columns([2, 1, 2])
 
     with col2:
-        if st.button("Comenzar →", use_container_width=True):
+
+        if st.button(
+            "Comenzar →",
+            use_container_width=True
+        ):
             st.session_state.inicio = True
             st.rerun()
 
 
-#Preguntas
+# ==================================================
+# TEST
+# ==================================================
 else:
 
     st.title("Personality Quiz")
