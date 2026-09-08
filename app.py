@@ -111,7 +111,7 @@ if "inicio" not in st.session_state:
 # --------------------------------------------------
 if not st.session_state.inicio:
 
-    poner_fondo_gif("1.gif")
+    poner_fondo_gif("white.gif")
 
     st.markdown(
         """
