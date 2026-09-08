@@ -151,7 +151,7 @@ if not st.session_state.inicio:
 
     # Título
     st.markdown(
-        "<div class='welcome-title'>Personality Quiz</div>",
+        "<div class='welcome-title'>ESSENTIA</div>",
         unsafe_allow_html=True
     )
 
