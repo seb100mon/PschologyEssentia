@@ -6,15 +6,12 @@ from pathlib import Path
 # CONFIGURACIÓN
 # --------------------------------------------------
 st.set_page_config(
-    page_title="Personality Quiz",
+    page_title="ESSENTIA",
     page_icon="✨",
     layout="wide"
 )
 
 
-# --------------------------------------------------
-# FUNCIÓN PARA COLOCAR GIF COMO FONDO
-# --------------------------------------------------
 def poner_fondo_gif(nombre_archivo):
 
     ruta = Path(__file__).parent / nombre_archivo
@@ -136,16 +133,12 @@ def poner_fondo_gif(nombre_archivo):
     )
 
 
-# --------------------------------------------------
-# SESIÓN
-# --------------------------------------------------
 if "inicio" not in st.session_state:
     st.session_state.inicio = False
 
 
-# ==================================================
-# PANTALLA DE BIENVENIDA
-# ==================================================
+#Welcome Screen
+
 if not st.session_state.inicio:
 
     poner_fondo_gif("white.gif")
@@ -156,9 +149,8 @@ if not st.session_state.inicio:
         unsafe_allow_html=True
     )
 
-    # IMPORTANTE:
-    # HTML en una sola línea para evitar que Streamlit
-    # lo interprete como bloque de código.
+
+
     st.markdown(
         "<div class='welcome-title'>Personality Quiz</div>",
         unsafe_allow_html=True
@@ -169,15 +161,16 @@ if not st.session_state.inicio:
         unsafe_allow_html=True
     )
 
-    if st.button("Comenzar →"):
+col1, col2, col3 = st.columns([2, 1, 2])
 
+with col2:
+    if st.button("Comenzar →", use_container_width=True):
         st.session_state.inicio = True
         st.rerun()
 
 
-# ==================================================
-# TEST
-# ==================================================
+#Preguntas
+
 else:
 
     st.title("Personality Quiz")
