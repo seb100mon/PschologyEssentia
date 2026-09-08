@@ -237,7 +237,7 @@ if "inicio" not in st.session_state:
 if not st.session_state.inicio:
 
     # CAMBIAMOS GIF POR MP4
-    poner_fondo_video(white2.mp4")
+    poner_fondo_video("white2.mp4")
 
     # Espacio superior
     st.markdown(
