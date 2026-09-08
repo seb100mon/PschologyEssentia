@@ -119,7 +119,7 @@ if "inicio" not in st.session_state:
 # --------------------------------------------------
 if not st.session_state.inicio:
 
-    poner_fondo_gif("fondo.gif")
+    poner_fondo_gif("C:\\Users\\user\\Downloads\\fe55b1d6eb20b45b6299c8cfdf69878d")
 
     st.markdown(
         """
