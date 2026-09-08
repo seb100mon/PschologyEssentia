@@ -2,9 +2,7 @@ import streamlit as st
 import base64
 from pathlib import Path
 
-# --------------------------------------------------
-# CONFIGURACIÓN
-# --------------------------------------------------
+
 st.set_page_config(
     page_title="ESSENTIA",
     page_icon="✨",
@@ -12,9 +10,6 @@ st.set_page_config(
 )
 
 
-# --------------------------------------------------
-# CARGAR VIDEO
-# --------------------------------------------------
 @st.cache_data
 def cargar_video(nombre_archivo):
     ruta = Path(__file__).parent / nombre_archivo
@@ -26,9 +21,7 @@ def cargar_video(nombre_archivo):
     return base64.b64encode(video).decode()
 
 
-# --------------------------------------------------
-# VIDEO COMO FONDO
-# --------------------------------------------------
+
 def poner_fondo_video(nombre_archivo):
 
     video_base64 = cargar_video(nombre_archivo)
@@ -110,9 +103,6 @@ footer {{
 }}
 
 
-/* --------------------------------------------------
-   TÍTULO
--------------------------------------------------- */
 .welcome-title {{
     font-size: clamp(55px, 6vw, 95px);
 
@@ -133,9 +123,6 @@ footer {{
 }}
 
 
-/* --------------------------------------------------
-   SUBTÍTULO
--------------------------------------------------- */
 .welcome-subtitle {{
     font-size: clamp(18px, 1.5vw, 24px);
 
@@ -157,9 +144,6 @@ footer {{
 }}
 
 
-/* --------------------------------------------------
-   BOTÓN
--------------------------------------------------- */
 div.stButton {{
     margin-top: 25px;
 }}
@@ -202,9 +186,6 @@ div.stButton > button:hover {{
 }}
 
 
-/* --------------------------------------------------
-   MÓVIL
--------------------------------------------------- */
 @media (max-width: 768px) {{
 
     .block-container {{
@@ -224,19 +205,15 @@ div.stButton > button:hover {{
     )
 
 
-# --------------------------------------------------
-# SESSION STATE
-# --------------------------------------------------
 if "inicio" not in st.session_state:
     st.session_state.inicio = False
 
 
-# ==================================================
-# WELCOME SCREEN
-# ==================================================
+#welcome Screen
+
 if not st.session_state.inicio:
 
-    # CAMBIAMOS GIF POR MP4
+#Video de fondo
     poner_fondo_video("white2.mp4")
 
     # Espacio superior
@@ -245,13 +222,13 @@ if not st.session_state.inicio:
         unsafe_allow_html=True
     )
 
-    # Título
+#Título
     st.markdown(
         "<div class='welcome-title'>ESSENTIA</div>",
         unsafe_allow_html=True
     )
 
-    # Subtítulo
+#Subtítulo
     st.markdown(
         "<div class='welcome-subtitle'>"
         "Descubre más sobre tu personalidad,<br>"
@@ -261,7 +238,6 @@ if not st.session_state.inicio:
         unsafe_allow_html=True
     )
 
-    # BOTÓN CENTRADO
     col1, col2, col3 = st.columns([2, 1, 2])
 
     with col2:
@@ -274,9 +250,7 @@ if not st.session_state.inicio:
             st.rerun()
 
 
-# ==================================================
-# TEST
-# ==================================================
+#Preguntas
 else:
 
     st.title("Personality Quiz")
