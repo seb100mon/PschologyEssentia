@@ -3,7 +3,7 @@ import base64
 from pathlib import Path
 
 # --------------------------------------------------
-# CONFIGURACIÓN GENERAL
+# CONFIGURACIÓN
 # --------------------------------------------------
 st.set_page_config(
     page_title="Personality Quiz",
@@ -13,203 +13,178 @@ st.set_page_config(
 
 
 # --------------------------------------------------
-# FUNCIÓN PARA USAR GIF COMO FONDO
+# FUNCIÓN PARA COLOCAR GIF COMO FONDO
 # --------------------------------------------------
 def poner_fondo_gif(nombre_archivo):
 
     ruta = Path(__file__).parent / nombre_archivo
 
-    gif = ruta.read_bytes()
+    if not ruta.exists():
+        st.error(f"No se encontró el archivo: {nombre_archivo}")
+        st.stop()
 
+    gif = ruta.read_bytes()
     gif_base64 = base64.b64encode(gif).decode()
 
     st.markdown(
-        f"""
-<style>
+        f"""<style>
+        .stApp {{
+            background-image: url("data:image/gif;base64,{gif_base64}");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }}
 
-.stApp {{
-    background-image:
-        linear-gradient(
-            rgba(0, 0, 0, 0.20),
-            rgba(0, 0, 0, 0.35)
-        ),
-        url("data:image/gif;base64,{gif_base64}");
+        header {{
+            background: transparent !important;
+        }}
 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}}
+        footer {{
+            visibility: hidden;
+        }}
 
-/* Ocultar elementos de Streamlit */
-header {{
-    background: transparent !important;
-}}
+        #MainMenu {{
+            visibility: hidden;
+        }}
 
-footer {{
-    visibility: hidden;
-}}
+        .block-container {{
+            max-width: 100%;
+            padding-top: 0rem;
+            padding-bottom: 2rem;
+            padding-left: 4rem;
+            padding-right: 4rem;
+        }}
 
-#MainMenu {{
-    visibility: hidden;
-}}
+        /* Título */
+        .welcome-title {{
+            font-size: clamp(55px, 6vw, 95px);
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            letter-spacing: -3px;
+            line-height: 1;
+            margin-bottom: 24px;
+            text-shadow: 0px 2px 20px rgba(0,0,0,0.18);
+        }}
 
-/* Quitar márgenes grandes */
-.block-container {{
-    padding-top: 0rem;
-    padding-bottom: 0rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    max-width: 100%;
-}}
+        /* Subtítulo */
+        .welcome-subtitle {{
+            font-size: clamp(18px, 1.5vw, 24px);
+            color: rgba(255,255,255,0.90);
+            text-align: center;
+            line-height: 1.6;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            text-shadow: 0px 2px 15px rgba(0,0,0,0.20);
+        }}
 
-/* CONTENEDOR DE BIENVENIDA */
-.welcome-container {{
-    height: 74vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}}
+        /* Botón */
+        div.stButton {{
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }}
 
-/* TÍTULO */
-.welcome-title {{
-    font-size: 72px;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 20px;
-    letter-spacing: -2px;
-    line-height: 1.05;
-}}
+        div.stButton > button {{
+            width: 220px;
+            height: 56px;
 
-/* SUBTÍTULO */
-.welcome-subtitle {{
-    font-size: 22px;
-    color: rgba(255,255,255,0.88);
-    max-width: 750px;
-    line-height: 1.55;
-    font-weight: 400;
-}}
+            background: rgba(255,255,255,0.10);
 
-/* BOTÓN */
-div.stButton {{
-    text-align: center;
-    width: 100%;
-}}
+            color: white;
 
-div.stButton > button {{
-    width: 100%;
-    height: 68px;
+            border: 1px solid rgba(255,255,255,0.65);
 
-    background: rgba(255,255,255,0.08);
+            border-radius: 50px;
 
-    color: white;
+            font-size: 17px;
+            font-weight: 500;
 
-    border: 1px solid rgba(255,255,255,0.60);
+            backdrop-filter: blur(8px);
 
-    border-radius: 40px;
+            transition:
+                background 0.3s ease,
+                transform 0.3s ease,
+                color 0.3s ease;
+        }}
 
-    font-size: 18px;
-    font-weight: 500;
+        div.stButton > button:hover {{
+            background: white;
+            color: black;
+            border-color: white;
+            transform: translateY(-2px);
+        }}
 
-    transition: all 0.3s ease;
+        @media (max-width: 768px) {{
 
-    backdrop-filter: blur(8px);
-}}
+            .block-container {{
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }}
 
-div.stButton > button:hover {{
-    background: rgba(255,255,255,0.95);
+            .welcome-title {{
+                letter-spacing: -1px;
+            }}
+        }}
 
-    color: black;
-
-    border: 1px solid white;
-
-    transform: scale(1.01);
-}}
-
-div.stButton > button:active {{
-    transform: scale(0.99);
-}}
-
-/* RESPONSIVE PARA CELULAR */
-@media (max-width: 768px) {{
-
-    .welcome-title {{
-        font-size: 45px;
-    }}
-
-    .welcome-subtitle {{
-        font-size: 18px;
-        padding-left: 15px;
-        padding-right: 15px;
-    }}
-
-    .block-container {{
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }}
-
-}}
-
-</style>
-""",
+        </style>""",
         unsafe_allow_html=True
     )
 
 
 # --------------------------------------------------
-# ESTADO DE LA APLICACIÓN
+# SESIÓN
 # --------------------------------------------------
 if "inicio" not in st.session_state:
     st.session_state.inicio = False
 
 
-# --------------------------------------------------
+# ==================================================
 # PANTALLA DE BIENVENIDA
-# --------------------------------------------------
+# ==================================================
 if not st.session_state.inicio:
 
     poner_fondo_gif("white.gif")
 
+    # Espacio superior
     st.markdown(
-"""
-<div class="welcome-container">
-
-    <div class="welcome-title">
-        Personality Quiz
-    </div>
-
-    <div class="welcome-subtitle">
-        Descubre más sobre tu personalidad,<br>
-        tu forma de pensar y la manera en que interactúas<br>
-        con el mundo.
-    </div>
-
-</div>
-""",
+        "<div style='height: 27vh;'></div>",
         unsafe_allow_html=True
     )
 
-    if st.button(
-        "Comenzar →",
-        use_container_width=True
-    ):
+    # IMPORTANTE:
+    # HTML en una sola línea para evitar que Streamlit
+    # lo interprete como bloque de código.
+    st.markdown(
+        "<div class='welcome-title'>Personality Quiz</div>",
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        "<div class='welcome-subtitle'>Descubre más sobre tu personalidad,<br>tu forma de pensar y la manera en que interactúas<br>con el mundo.</div>",
+        unsafe_allow_html=True
+    )
+
+    if st.button("Comenzar →"):
 
         st.session_state.inicio = True
-
         st.rerun()
 
 
-# --------------------------------------------------
+# ==================================================
 # TEST
-# --------------------------------------------------
+# ==================================================
 else:
 
     st.title("Personality Quiz")
 
     st.write(
-        "Selecciona la opción que mejor represente tu forma de pensar o actuar."
+        "Selecciona la opción que mejor represente "
+        "tu forma de pensar o actuar."
     )
 
     respuesta = st.radio(
