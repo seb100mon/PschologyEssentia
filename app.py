@@ -8,19 +8,18 @@ st.set_page_config(
     layout="wide"
 )
 
-
 # --------------------------------------------------
 # FUNCIÓN PARA COLOCAR GIF COMO FONDO
 # --------------------------------------------------
-def poner_fondo_gif(archivo):
-    gif = Path(archivo).read_bytes()
+def poner_fondo_gif(nombre_archivo):
+    ruta = Path(__file__).parent / nombre_archivo
+    gif = ruta.read_bytes()
     gif_base64 = base64.b64encode(gif).decode()
 
     st.markdown(
         f"""
         <style>
 
-        /* Fondo de toda la aplicación */
         .stApp {{
             background-image:
                 linear-gradient(
@@ -35,58 +34,51 @@ def poner_fondo_gif(archivo):
             background-attachment: fixed;
         }}
 
-        /* Ocultar header de Streamlit */
         header {{
             background: transparent !important;
         }}
 
-        /* Ocultar footer */
         footer {{
             visibility: hidden;
         }}
 
-        /* Contenedor principal */
         .block-container {{
             padding-top: 0rem;
             padding-bottom: 0rem;
             max-width: 100%;
         }}
 
-        /* Texto principal */
-        .welcome-title {{
-            font-size: 64px;
-            font-weight: 700;
-            color: white;
-            text-align: center;
-            margin-bottom: 10px;
-        }}
-
-        .welcome-subtitle {{
-            font-size: 22px;
-            color: rgba(255,255,255,0.85);
-            text-align: center;
-            max-width: 700px;
-            margin: auto;
-        }}
-
-        /* Centrar todo verticalmente */
         .welcome-container {{
-            height: 75vh;
+            height: 78vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
         }}
 
-        /* Botón */
+        .welcome-title {{
+            font-size: 64px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }}
+
+        .welcome-subtitle {{
+            font-size: 22px;
+            color: rgba(255,255,255,0.88);
+            max-width: 700px;
+            line-height: 1.5;
+        }}
+
         div.stButton {{
             text-align: center;
         }}
 
         div.stButton > button {{
-            background: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.14);
             color: white;
-            border: 1px solid rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.55);
             border-radius: 30px;
             padding: 12px 40px;
             font-size: 18px;
@@ -108,7 +100,7 @@ def poner_fondo_gif(archivo):
 
 
 # --------------------------------------------------
-# ESTADO DE LA APLICACIÓN
+# ESTADO DE LA APP
 # --------------------------------------------------
 if "inicio" not in st.session_state:
     st.session_state.inicio = False
@@ -119,7 +111,7 @@ if "inicio" not in st.session_state:
 # --------------------------------------------------
 if not st.session_state.inicio:
 
-    poner_fondo_gif("C:\\Users\\user\\Downloads\\fe55b1d6eb20b45b6299c8cfdf69878d")
+    poner_fondo_gif("1.gif")
 
     st.markdown(
         """
@@ -130,7 +122,7 @@ if not st.session_state.inicio:
             </div>
 
             <div class="welcome-subtitle">
-                Conoce un poco más sobre tu personalidad,
+                Descubre más sobre tu personalidad,
                 tu forma de pensar y la manera en que interactúas
                 con el mundo.
             </div>
