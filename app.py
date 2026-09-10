@@ -33,7 +33,7 @@ def poner_fondo_video(nombre_archivo):
 
         <style>
 
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@300;400;500&display=swap');
 
         #background-video {{
             position: fixed;
@@ -49,7 +49,7 @@ def poner_fondo_video(nombre_archivo):
 
         .stApp {{
             background: transparent !important;
-            font-family: 'Manrope', sans-serif;
+            font-family: 'Instrument Sans', sans-serif;
         }}
 
         [data-testid="stAppViewContainer"] {{
@@ -81,66 +81,68 @@ def poner_fondo_video(nombre_archivo):
         }}
 
         .welcome-title {{
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(65px, 7vw, 110px);
-            font-weight: 600;
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(72px, 8vw, 125px);
+            font-weight: 400;
             color: white;
             text-align: center;
-            letter-spacing: 2px;
-            line-height: 1;
-            margin-bottom: 24px;
-            text-shadow: 0px 2px 20px rgba(0,0,0,0.15);
+            letter-spacing: 0px;
+            line-height: 0.95;
+            margin-bottom: 28px;
+            text-shadow: 0px 2px 20px rgba(0,0,0,0.12);
         }}
 
         .welcome-subtitle {{
-            font-family: 'Manrope', sans-serif;
-            font-size: clamp(18px, 1.5vw, 24px);
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: clamp(18px, 1.45vw, 23px);
             color: rgba(255,255,255,0.92);
             text-align: center;
-            line-height: 1.7;
+            line-height: 1.65;
             max-width: 760px;
             margin-left: auto;
             margin-right: auto;
             font-weight: 300;
-            text-shadow: 0px 2px 15px rgba(0,0,0,0.12);
+            letter-spacing: 0.1px;
+            text-shadow: 0px 2px 15px rgba(0,0,0,0.10);
         }}
 
         .final-title {{
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(80px, 9vw, 130px);
-            font-weight: 600;
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(85px, 10vw, 145px);
+            font-weight: 400;
             color: white;
             text-align: center;
-            letter-spacing: 2px;
-            line-height: 1;
-            margin-bottom: 25px;
-            text-shadow: 0px 2px 20px rgba(0,0,0,0.18);
+            letter-spacing: 0px;
+            line-height: 0.95;
+            margin-bottom: 30px;
+            text-shadow: 0px 2px 20px rgba(0,0,0,0.14);
         }}
 
         .final-subtitle {{
-            font-family: 'Manrope', sans-serif;
-            font-size: clamp(20px, 1.7vw, 28px);
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: clamp(20px, 1.6vw, 27px);
             color: rgba(255,255,255,0.95);
             text-align: center;
             line-height: 1.7;
-            max-width: 850px;
+            max-width: 880px;
             margin-left: auto;
             margin-right: auto;
             font-weight: 300;
-            text-shadow: 0px 2px 15px rgba(0,0,0,0.15);
+            letter-spacing: 0.1px;
+            text-shadow: 0px 2px 15px rgba(0,0,0,0.12);
         }}
 
         div.stButton {{
-            margin-top: 25px;
+            margin-top: 28px;
         }}
 
         div.stButton > button {{
-            font-family: 'Manrope', sans-serif;
+            font-family: 'Instrument Sans', sans-serif;
             width: 100%;
             height: 56px;
-            background: rgba(255,255,255,0.10);
+            background: rgba(255,255,255,0.08);
             color: white;
-            border: 1px solid rgba(255,255,255,0.70);
+            border: 1px solid rgba(255,255,255,0.62);
             border-radius: 50px;
             font-size: 16px;
             font-weight: 400;
@@ -150,14 +152,14 @@ def poner_fondo_video(nombre_archivo):
         }}
 
         div.stButton > button:hover {{
-            background: white;
-            color: black;
+            background: rgba(255,255,255,0.96);
+            color: #111111;
             border-color: white;
             transform: translateY(-2px);
         }}
 
         h1, h2, h3, p, label {{
-            font-family: 'Manrope', sans-serif;
+            font-family: 'Instrument Sans', sans-serif;
         }}
 
         @media (max-width: 768px) {{
@@ -166,9 +168,17 @@ def poner_fondo_video(nombre_archivo):
                 padding-right: 1.5rem;
             }}
 
-            .welcome-title,
+            .welcome-title {{
+                font-size: 64px;
+            }}
+
             .final-title {{
-                letter-spacing: 1px;
+                font-size: 76px;
+            }}
+
+            .welcome-subtitle,
+            .final-subtitle {{
+                line-height: 1.55;
             }}
         }}
 
