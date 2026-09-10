@@ -27,7 +27,7 @@ def poner_fondo_video(nombre_archivo):
 
     st.markdown(
         f"""
-        <video autoplay muted loop playsinline id="white2">
+        <video autoplay muted loop playsinline id="background-video">
             <source src="data:video/mp4;base64,{video_base64}" type="video/mp4">
         </video>
 
@@ -35,7 +35,7 @@ def poner_fondo_video(nombre_archivo):
 
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@300;400;500&display=swap');
 
-        #white2 {{
+        #background-video {{
             position: fixed;
             top: 0;
             left: 0;
@@ -185,7 +185,7 @@ if "respuesta_1" not in st.session_state:
 
 if st.session_state.pantalla == "inicio":
 
-    poner_fondo_video("background.mp4")
+    poner_fondo_video("white2.mp4")
 
     st.markdown(
         "<div style='height: 27vh;'></div>",
