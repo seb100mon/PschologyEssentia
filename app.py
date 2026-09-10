@@ -33,7 +33,7 @@ def poner_fondo_video(nombre_archivo):
 
         <style>
 
-        @import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&display=swap');
 
         #background-video {{
             position: fixed;
@@ -49,7 +49,7 @@ def poner_fondo_video(nombre_archivo):
 
         .stApp {{
             background: transparent !important;
-            font-family: 'Saira Stencil One', sans-serif;
+            font-family: 'Oswald', sans-serif;
         }}
 
         [data-testid="stAppViewContainer"] {{
@@ -81,70 +81,70 @@ def poner_fondo_video(nombre_archivo):
         }}
 
         .welcome-title {{
-            font-family: 'Saira Stencil One', sans-serif;
-            font-size: clamp(70px, 8vw, 120px);
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(72px, 8vw, 125px);
             font-weight: 400;
             color: white;
             text-align: center;
-            letter-spacing: 7px;
+            letter-spacing: 8px;
             line-height: 1;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
             text-shadow: 0px 2px 18px rgba(0,0,0,0.10);
         }}
 
         .welcome-subtitle {{
-            font-family: 'Saira Stencil One', sans-serif;
-            font-size: clamp(16px, 1.25vw, 20px);
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(18px, 1.5vw, 23px);
             color: rgba(255,255,255,0.92);
             text-align: center;
-            line-height: 1.8;
-            max-width: 780px;
+            line-height: 1.7;
+            max-width: 760px;
             margin-left: auto;
             margin-right: auto;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+            font-weight: 300;
+            letter-spacing: 0.8px;
             text-shadow: 0px 2px 12px rgba(0,0,0,0.08);
         }}
 
         .final-title {{
-            font-family: 'Saira Stencil One', sans-serif;
-            font-size: clamp(80px, 9vw, 135px);
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(85px, 9vw, 140px);
             font-weight: 400;
             color: white;
             text-align: center;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             line-height: 1;
             margin-bottom: 30px;
             text-shadow: 0px 2px 18px rgba(0,0,0,0.10);
         }}
 
         .final-subtitle {{
-            font-family: 'Saira Stencil One', sans-serif;
-            font-size: clamp(17px, 1.35vw, 22px);
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(20px, 1.6vw, 26px);
             color: rgba(255,255,255,0.95);
             text-align: center;
-            line-height: 1.8;
-            max-width: 900px;
+            line-height: 1.75;
+            max-width: 880px;
             margin-left: auto;
             margin-right: auto;
-            font-weight: 400;
-            letter-spacing: 0.4px;
+            font-weight: 300;
+            letter-spacing: 0.6px;
             text-shadow: 0px 2px 12px rgba(0,0,0,0.08);
         }}
 
         div.stButton {{
-            margin-top: 30px;
+            margin-top: 28px;
         }}
 
         div.stButton > button {{
-            font-family: 'Saira Stencil One', sans-serif;
+            font-family: 'Oswald', sans-serif;
             width: 100%;
             height: 56px;
             background: rgba(255,255,255,0.08);
             color: white;
             border: 1px solid rgba(255,255,255,0.62);
             border-radius: 50px;
-            font-size: 15px;
+            font-size: 17px;
             font-weight: 400;
             letter-spacing: 1px;
             backdrop-filter: blur(8px);
@@ -161,12 +161,12 @@ def poner_fondo_video(nombre_archivo):
         h1, h2, h3, h4, h5, h6,
         p, span, label, div,
         input, textarea, select, button {{
-            font-family: 'Saira Stencil One', sans-serif !important;
+            font-family: 'Oswald', sans-serif !important;
         }}
 
         [data-testid="stMarkdownContainer"],
         [data-testid="stWidgetLabel"] {{
-            font-family: 'Saira Stencil One', sans-serif !important;
+            font-family: 'Oswald', sans-serif !important;
         }}
 
         @media (max-width: 768px) {{
@@ -176,19 +176,18 @@ def poner_fondo_video(nombre_archivo):
             }}
 
             .welcome-title {{
-                font-size: 56px;
-                letter-spacing: 4px;
+                font-size: 58px;
+                letter-spacing: 5px;
             }}
 
             .final-title {{
-                font-size: 66px;
+                font-size: 70px;
                 letter-spacing: 2px;
             }}
 
             .welcome-subtitle,
             .final-subtitle {{
-                font-size: 16px;
-                line-height: 1.65;
+                line-height: 1.6;
             }}
         }}
 
