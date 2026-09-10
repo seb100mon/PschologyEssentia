@@ -169,7 +169,7 @@ if "respuesta_1" not in st.session_state:
 
 if st.session_state.pantalla == "inicio":
 
-    poner_fondo_video("background.mp4")
+    poner_fondo_video("white2.mp4")
 
     st.markdown("<div style='height: 27vh;'></div>", unsafe_allow_html=True)
 
