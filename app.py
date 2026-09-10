@@ -27,12 +27,15 @@ def poner_fondo_video(nombre_archivo):
 
     st.markdown(
         f"""
-        <video autoplay muted loop playsinline id="background-video">
+        <video autoplay muted loop playsinline id="white2">
             <source src="data:video/mp4;base64,{video_base64}" type="video/mp4">
         </video>
 
         <style>
-        #background-video {{
+
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@300;400;500&display=swap');
+
+        #white2 {{
             position: fixed;
             top: 0;
             left: 0;
@@ -46,6 +49,7 @@ def poner_fondo_video(nombre_archivo):
 
         .stApp {{
             background: transparent !important;
+            font-family: 'Manrope', sans-serif;
         }}
 
         [data-testid="stAppViewContainer"] {{
@@ -77,21 +81,23 @@ def poner_fondo_video(nombre_archivo):
         }}
 
         .welcome-title {{
-            font-size: clamp(55px, 6vw, 95px);
-            font-weight: 500;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(65px, 7vw, 110px);
+            font-weight: 600;
             color: white;
             text-align: center;
-            letter-spacing: -3px;
+            letter-spacing: 2px;
             line-height: 1;
             margin-bottom: 24px;
             text-shadow: 0px 2px 20px rgba(0,0,0,0.15);
         }}
 
         .welcome-subtitle {{
+            font-family: 'Manrope', sans-serif;
             font-size: clamp(18px, 1.5vw, 24px);
             color: rgba(255,255,255,0.92);
             text-align: center;
-            line-height: 1.6;
+            line-height: 1.7;
             max-width: 760px;
             margin-left: auto;
             margin-right: auto;
@@ -100,17 +106,19 @@ def poner_fondo_video(nombre_archivo):
         }}
 
         .final-title {{
-            font-size: clamp(70px, 8vw, 120px);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(80px, 9vw, 130px);
             font-weight: 600;
             color: white;
             text-align: center;
-            letter-spacing: -3px;
+            letter-spacing: 2px;
             line-height: 1;
             margin-bottom: 25px;
             text-shadow: 0px 2px 20px rgba(0,0,0,0.18);
         }}
 
         .final-subtitle {{
+            font-family: 'Manrope', sans-serif;
             font-size: clamp(20px, 1.7vw, 28px);
             color: rgba(255,255,255,0.95);
             text-align: center;
@@ -127,14 +135,16 @@ def poner_fondo_video(nombre_archivo):
         }}
 
         div.stButton > button {{
+            font-family: 'Manrope', sans-serif;
             width: 100%;
             height: 56px;
             background: rgba(255,255,255,0.10);
             color: white;
             border: 1px solid rgba(255,255,255,0.70);
             border-radius: 50px;
-            font-size: 17px;
-            font-weight: 500;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
             backdrop-filter: blur(8px);
             transition: all 0.3s ease;
         }}
@@ -146,16 +156,22 @@ def poner_fondo_video(nombre_archivo):
             transform: translateY(-2px);
         }}
 
+        h1, h2, h3, p, label {{
+            font-family: 'Manrope', sans-serif;
+        }}
+
         @media (max-width: 768px) {{
             .block-container {{
                 padding-left: 1.5rem;
                 padding-right: 1.5rem;
             }}
 
-            .welcome-title, .final-title {{
-                letter-spacing: -1px;
+            .welcome-title,
+            .final-title {{
+                letter-spacing: 1px;
             }}
         }}
+
         </style>
         """,
         unsafe_allow_html=True
@@ -169,9 +185,12 @@ if "respuesta_1" not in st.session_state:
 
 if st.session_state.pantalla == "inicio":
 
-    poner_fondo_video("white2.mp4")
+    poner_fondo_video("background.mp4")
 
-    st.markdown("<div style='height: 27vh;'></div>", unsafe_allow_html=True)
+    st.markdown(
+        "<div style='height: 27vh;'></div>",
+        unsafe_allow_html=True
+    )
 
     st.markdown(
         "<div class='welcome-title'>ESSENTIA</div>",
@@ -219,7 +238,10 @@ elif st.session_state.pantalla == "final":
 
     poner_fondo_video("Final.mp4")
 
-    st.markdown("<div style='height: 25vh;'></div>", unsafe_allow_html=True)
+    st.markdown(
+        "<div style='height: 25vh;'></div>",
+        unsafe_allow_html=True
+    )
 
     st.markdown(
         "<div class='final-title'>Gracias</div>",
