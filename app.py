@@ -33,7 +33,7 @@ def poner_fondo_video(nombre_archivo):
 
         <style>
 
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tangsa:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500;700&display=swap');
 
         #background-video {{
             position: fixed;
@@ -49,7 +49,7 @@ def poner_fondo_video(nombre_archivo):
 
         .stApp {{
             background: transparent !important;
-            font-family: 'Noto Sans Tangsa', sans-serif;
+            font-family: 'Alegreya Sans', sans-serif;
         }}
 
         [data-testid="stAppViewContainer"] {{
@@ -81,53 +81,53 @@ def poner_fondo_video(nombre_archivo):
         }}
 
         .welcome-title {{
-            font-family: 'Noto Sans Tangsa', sans-serif;
-            font-size: clamp(68px, 7vw, 115px);
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: clamp(72px, 8vw, 120px);
             font-weight: 500;
             color: white;
             text-align: center;
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             line-height: 1;
-            margin-bottom: 28px;
-            text-shadow: 0px 2px 20px rgba(0,0,0,0.10);
+            margin-bottom: 26px;
+            text-shadow: 0px 2px 18px rgba(0,0,0,0.10);
         }}
 
         .welcome-subtitle {{
-            font-family: 'Noto Sans Tangsa', sans-serif;
-            font-size: clamp(17px, 1.4vw, 22px);
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: clamp(19px, 1.5vw, 24px);
             color: rgba(255,255,255,0.92);
             text-align: center;
-            line-height: 1.75;
+            line-height: 1.65;
             max-width: 760px;
             margin-left: auto;
             margin-right: auto;
-            font-weight: 400;
+            font-weight: 300;
             letter-spacing: 0.3px;
             text-shadow: 0px 2px 12px rgba(0,0,0,0.08);
         }}
 
         .final-title {{
-            font-family: 'Noto Sans Tangsa', sans-serif;
-            font-size: clamp(75px, 8vw, 125px);
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: clamp(85px, 9vw, 135px);
             font-weight: 500;
             color: white;
             text-align: center;
             letter-spacing: 1px;
             line-height: 1;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
             text-shadow: 0px 2px 18px rgba(0,0,0,0.10);
         }}
 
         .final-subtitle {{
-            font-family: 'Noto Sans Tangsa', sans-serif;
-            font-size: clamp(19px, 1.5vw, 25px);
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: clamp(21px, 1.7vw, 27px);
             color: rgba(255,255,255,0.95);
             text-align: center;
-            line-height: 1.75;
+            line-height: 1.7;
             max-width: 880px;
             margin-left: auto;
             margin-right: auto;
-            font-weight: 400;
+            font-weight: 300;
             letter-spacing: 0.2px;
             text-shadow: 0px 2px 12px rgba(0,0,0,0.08);
         }}
@@ -137,16 +137,16 @@ def poner_fondo_video(nombre_archivo):
         }}
 
         div.stButton > button {{
-            font-family: 'Noto Sans Tangsa', sans-serif;
+            font-family: 'Alegreya Sans', sans-serif;
             width: 100%;
             height: 56px;
             background: rgba(255,255,255,0.08);
             color: white;
             border: 1px solid rgba(255,255,255,0.62);
             border-radius: 50px;
-            font-size: 15px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: 0.4px;
             backdrop-filter: blur(8px);
             transition: all 0.3s ease;
         }}
@@ -158,8 +158,18 @@ def poner_fondo_video(nombre_archivo):
             transform: translateY(-2px);
         }}
 
-        h1, h2, h3, p, label {{
-            font-family: 'Noto Sans Tangsa', sans-serif !important;
+        h1, h2, h3, h4, h5, h6,
+        p, span, label, div,
+        input, textarea, select, button {{
+            font-family: 'Alegreya Sans', sans-serif !important;
+        }}
+
+        [data-testid="stMarkdownContainer"] {{
+            font-family: 'Alegreya Sans', sans-serif !important;
+        }}
+
+        [data-testid="stWidgetLabel"] {{
+            font-family: 'Alegreya Sans', sans-serif !important;
         }}
 
         @media (max-width: 768px) {{
@@ -169,12 +179,17 @@ def poner_fondo_video(nombre_archivo):
             }}
 
             .welcome-title {{
-                font-size: 58px;
-                letter-spacing: 4px;
+                font-size: 60px;
+                letter-spacing: 3px;
             }}
 
             .final-title {{
-                font-size: 68px;
+                font-size: 72px;
+            }}
+
+            .welcome-subtitle,
+            .final-subtitle {{
+                line-height: 1.55;
             }}
         }}
 
