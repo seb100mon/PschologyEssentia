@@ -33,7 +33,7 @@ def poner_fondo_video(nombre_archivo):
 
         <style>
 
-        @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
 
         #background-video {{
             position: fixed;
@@ -49,7 +49,7 @@ def poner_fondo_video(nombre_archivo):
 
         .stApp {{
             background: transparent !important;
-            font-family: 'Alegreya Sans', sans-serif;
+            font-family: 'Saira Stencil One', sans-serif;
         }}
 
         [data-testid="stAppViewContainer"] {{
@@ -81,72 +81,72 @@ def poner_fondo_video(nombre_archivo):
         }}
 
         .welcome-title {{
-            font-family: 'Alegreya Sans', sans-serif;
-            font-size: clamp(72px, 8vw, 120px);
-            font-weight: 500;
+            font-family: 'Saira Stencil One', sans-serif;
+            font-size: clamp(70px, 8vw, 120px);
+            font-weight: 400;
             color: white;
             text-align: center;
-            letter-spacing: 5px;
+            letter-spacing: 7px;
             line-height: 1;
-            margin-bottom: 26px;
+            margin-bottom: 30px;
             text-shadow: 0px 2px 18px rgba(0,0,0,0.10);
         }}
 
         .welcome-subtitle {{
-            font-family: 'Alegreya Sans', sans-serif;
-            font-size: clamp(19px, 1.5vw, 24px);
+            font-family: 'Saira Stencil One', sans-serif;
+            font-size: clamp(16px, 1.25vw, 20px);
             color: rgba(255,255,255,0.92);
             text-align: center;
-            line-height: 1.65;
-            max-width: 760px;
+            line-height: 1.8;
+            max-width: 780px;
             margin-left: auto;
             margin-right: auto;
-            font-weight: 300;
-            letter-spacing: 0.3px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
             text-shadow: 0px 2px 12px rgba(0,0,0,0.08);
         }}
 
         .final-title {{
-            font-family: 'Alegreya Sans', sans-serif;
-            font-size: clamp(85px, 9vw, 135px);
-            font-weight: 500;
+            font-family: 'Saira Stencil One', sans-serif;
+            font-size: clamp(80px, 9vw, 135px);
+            font-weight: 400;
             color: white;
             text-align: center;
-            letter-spacing: 1px;
+            letter-spacing: 4px;
             line-height: 1;
-            margin-bottom: 28px;
+            margin-bottom: 30px;
             text-shadow: 0px 2px 18px rgba(0,0,0,0.10);
         }}
 
         .final-subtitle {{
-            font-family: 'Alegreya Sans', sans-serif;
-            font-size: clamp(21px, 1.7vw, 27px);
+            font-family: 'Saira Stencil One', sans-serif;
+            font-size: clamp(17px, 1.35vw, 22px);
             color: rgba(255,255,255,0.95);
             text-align: center;
-            line-height: 1.7;
-            max-width: 880px;
+            line-height: 1.8;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
-            font-weight: 300;
-            letter-spacing: 0.2px;
+            font-weight: 400;
+            letter-spacing: 0.4px;
             text-shadow: 0px 2px 12px rgba(0,0,0,0.08);
         }}
 
         div.stButton {{
-            margin-top: 28px;
+            margin-top: 30px;
         }}
 
         div.stButton > button {{
-            font-family: 'Alegreya Sans', sans-serif;
+            font-family: 'Saira Stencil One', sans-serif;
             width: 100%;
             height: 56px;
             background: rgba(255,255,255,0.08);
             color: white;
             border: 1px solid rgba(255,255,255,0.62);
             border-radius: 50px;
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 400;
-            letter-spacing: 0.4px;
+            letter-spacing: 1px;
             backdrop-filter: blur(8px);
             transition: all 0.3s ease;
         }}
@@ -161,15 +161,12 @@ def poner_fondo_video(nombre_archivo):
         h1, h2, h3, h4, h5, h6,
         p, span, label, div,
         input, textarea, select, button {{
-            font-family: 'Alegreya Sans', sans-serif !important;
+            font-family: 'Saira Stencil One', sans-serif !important;
         }}
 
-        [data-testid="stMarkdownContainer"] {{
-            font-family: 'Alegreya Sans', sans-serif !important;
-        }}
-
+        [data-testid="stMarkdownContainer"],
         [data-testid="stWidgetLabel"] {{
-            font-family: 'Alegreya Sans', sans-serif !important;
+            font-family: 'Saira Stencil One', sans-serif !important;
         }}
 
         @media (max-width: 768px) {{
@@ -179,17 +176,19 @@ def poner_fondo_video(nombre_archivo):
             }}
 
             .welcome-title {{
-                font-size: 60px;
-                letter-spacing: 3px;
+                font-size: 56px;
+                letter-spacing: 4px;
             }}
 
             .final-title {{
-                font-size: 72px;
+                font-size: 66px;
+                letter-spacing: 2px;
             }}
 
             .welcome-subtitle,
             .final-subtitle {{
-                line-height: 1.55;
+                font-size: 16px;
+                line-height: 1.65;
             }}
         }}
 
